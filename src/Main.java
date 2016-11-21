@@ -1,38 +1,26 @@
-import java.util.Scanner;
+/**
+ * Coding test for viagogo implemented by German Mikulski
+ */
 
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Input a point"); //read input string of a point
-        Scanner input = new Scanner(System.in);
-        String point = input.nextLine();
-        input.close();
+        //taking user input of a point
+        Input_taker.take_input();
 
-        Scanner parse = new Scanner(point); //parse the string into x and y coordinates of a point
-        parse.useDelimiter(",");
-        int x = parse.nextInt();
-        int y = parse.nextInt();
-        parse.close();
+        //randomly generate events and tickets for them
+        Generator generator = new Generator(Input_taker.x,Input_taker.y);
 
-        Generator generator = new Generator(x,y);
+        System.out.printf("\nClosest events to (%d,%d):\n\n", Input_taker.x,Input_taker.y);
 
-        for (Event event : generator.events) {
-            event.print_event();
-
-        }
-
-        System.out.printf("Closest events to (%d,%d)\n", x,y);
-
-
+        //creating a list of closest events
         Calculator calculator = new Calculator(generator.events);
 
+        //printing closest events
         for (Event event : calculator.closest_events) {
             event.print_event();
         }
-
-
-       
 
     }
 }
