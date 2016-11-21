@@ -11,7 +11,7 @@ public class Input_taker {
 
     public static void take_input() {
 
-        System.out.println("Input a point"); //read input string of a point
+        System.out.println("Please input coordinates"); //read input string of a point
         Scanner input = new Scanner(System.in);
         String point = input.nextLine();
 
